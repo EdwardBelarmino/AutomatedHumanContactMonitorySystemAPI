@@ -17,7 +17,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private string TestString = "RAVNI";
         public AccountController()
         {
         }
