@@ -40,7 +40,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         // PUT api/<controller>/5
         public void Put([FromBody]Attendee attendee)
         {
-            var attendeeToUpdate = _context.Attendee.Where(a => a.Id == attendee.Id).SingleOrDefault();
+            var attendeeToUpdate = _context.Attendees.Where(a => a.Id == attendee.Id).SingleOrDefault();
             attendeeToUpdate.Name = attendee.Name;
             attendeeToUpdate.Age = attendee.Age;
             attendeeToUpdate.Address = attendee.Address;
