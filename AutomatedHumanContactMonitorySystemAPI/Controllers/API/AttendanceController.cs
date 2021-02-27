@@ -21,14 +21,16 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
         public List<Attendance> Get()
         {
-            var attendaces = _context.Attendances.Include(a => a.Attendee).ToList();
+            var attendaces = _context.Attendances.Include(a => a.Attendee).Include(a => a.Place).ToList();
+           
+
             return attendaces;
         }
 
         // GET api/<controller>/5
         public Attendance Get(int id)
         {
-            var attendance = _context.Attendances.Include(a => a.Attendee).Where(a => a.Id == id).SingleOrDefault();
+            var attendance = _context.Attendances.Include(a => a.Attendee).Include(a => a.Place).Where(a => a.Id == id).SingleOrDefault();
 
             return attendance;
         }
@@ -47,7 +49,6 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             attendanceToUpdate.Id = attendance.Id;
             attendanceToUpdate.AttendeeId = attendance.AttendeeId;
             attendanceToUpdate.VisitedDateTime = attendance.VisitedDateTime;
-            attendanceToUpdate.VisitedPlace = attendance.VisitedPlace;
             attendanceToUpdate.Temperature = attendance.Temperature;
             _context.SaveChanges();
         }
