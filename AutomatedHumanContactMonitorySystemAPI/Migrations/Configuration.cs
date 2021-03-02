@@ -18,6 +18,17 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            context.Places.Add(new Models.Place { Location = "SM Tarlac City" });
+
+            context.Attendees.Add(new Models.Attendee { Name = "Juan Pinas", 
+                                                        Address = "Quezon City", 
+                                                        Age = 54 });
+
+            context.Attendances.Add(new Models.Attendance { AttendeeId = 1, 
+                                                            VisitedDateTime = DateTime.Now, 
+                                                            Temperature = 37, 
+                                                            PlaceId = 1 });
+
         }
     }
 }
