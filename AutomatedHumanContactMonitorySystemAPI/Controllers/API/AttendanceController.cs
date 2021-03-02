@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemAPI.Models;
+﻿using AutomatedHumanContactMonitorySystemAPI.Dtos;
+using AutomatedHumanContactMonitorySystemAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,9 +20,20 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         {
             _context = new ApplicationDbContext();
         }
-        public List<Attendance> Get()
+        public List<AttendanceDto> Get()
         {
-            var attendaces = _context.Attendances.Include(a => a.Attendee).Include(a => a.Place).ToList();
+            var attendaces = _context.Attendances.Include(a => a.Attendee)
+                                                 .Include(a => a.Place)
+                                                 .Select(a => new AttendanceDto { Id = a.Id, 
+                                                                                  VisitedDateTime = a.VisitedDateTime, 
+                                                                                  Temperature = a.Temperature, 
+                                                                                  AttendeeId = a.Attendee.Id, 
+                                                                                  Name = a.Attendee.Name, 
+                                                                                  Age = a.Attendee.Age, 
+                                                                                  Address = a.Attendee.Address, 
+                                                                                  PlaceId = a.Place.Id,
+                                                                                  Location = a.Place.Location})
+                                                 .ToList();
            
 
             return attendaces;
@@ -30,7 +42,10 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         // GET api/<controller>/5
         public Attendance Get(int id)
         {
-            var attendance = _context.Attendances.Include(a => a.Attendee).Include(a => a.Place).Where(a => a.Id == id).SingleOrDefault();
+            var attendance = _context.Attendances.Include(a => a.Attendee)
+                                                 .Include(a => a.Place)
+                                                 .Where(a => a.Id == id)
+                                                 .SingleOrDefault();
 
             return attendance;
         }
