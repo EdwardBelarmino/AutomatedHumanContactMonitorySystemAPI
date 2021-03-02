@@ -183,6 +183,7 @@
     <Compile Include="Controllers\API\PlaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Dtos\AttendanceDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,7 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dtos\" />
     <Folder Include="Views\WebAPIConfig\" />
   </ItemGroup>
   <ItemGroup>
