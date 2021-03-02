@@ -7,13 +7,13 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdateAttendanceTable1 : IMigrationMetadata
+    public sealed partial class InitialDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateAttendanceTable1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102271256180_UpdateAttendanceTable1"; }
+            get { return "202103020115514_InitialDb"; }
         }
         
         string IMigrationMetadata.Source

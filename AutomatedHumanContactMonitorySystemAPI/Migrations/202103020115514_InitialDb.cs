@@ -14,12 +14,14 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         AttendeeId = c.Int(nullable: false),
                         VisitedDateTime = c.DateTime(nullable: false),
-                        VisitedPlace = c.String(),
                         Temperature = c.Double(nullable: false),
+                        PlaceId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Attendees", t => t.AttendeeId, cascadeDelete: true)
-                .Index(t => t.AttendeeId);
+                .ForeignKey("dbo.Places", t => t.PlaceId, cascadeDelete: true)
+                .Index(t => t.AttendeeId)
+                .Index(t => t.PlaceId);
             
             CreateTable(
                 "dbo.Attendees",
@@ -29,6 +31,15 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
                         Name = c.String(),
                         Age = c.Int(),
                         Address = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Places",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Location = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -108,6 +119,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Attendances", "PlaceId", "dbo.Places");
             DropForeignKey("dbo.Attendances", "AttendeeId", "dbo.Attendees");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -115,12 +127,14 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Attendances", new[] { "PlaceId" });
             DropIndex("dbo.Attendances", new[] { "AttendeeId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Places");
             DropTable("dbo.Attendees");
             DropTable("dbo.Attendances");
         }

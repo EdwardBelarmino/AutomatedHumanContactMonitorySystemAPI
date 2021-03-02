@@ -186,25 +186,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102230907578_InitialDb.cs" />
-    <Compile Include="Migrations\202102230907578_InitialDb.Designer.cs">
-      <DependentUpon>202102230907578_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102271240164_CreateTablePlace.cs" />
-    <Compile Include="Migrations\202102271240164_CreateTablePlace.Designer.cs">
-      <DependentUpon>202102271240164_CreateTablePlace.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102271246073_UpdateAttendanceTable.cs" />
-    <Compile Include="Migrations\202102271246073_UpdateAttendanceTable.Designer.cs">
-      <DependentUpon>202102271246073_UpdateAttendanceTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102271256180_UpdateAttendanceTable1.cs" />
-    <Compile Include="Migrations\202102271256180_UpdateAttendanceTable1.Designer.cs">
-      <DependentUpon>202102271256180_UpdateAttendanceTable1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102271321497_UpdateAttendancesTable.cs" />
-    <Compile Include="Migrations\202102271321497_UpdateAttendancesTable.Designer.cs">
-      <DependentUpon>202102271321497_UpdateAttendancesTable.cs</DependentUpon>
+    <Compile Include="Migrations\202103020115514_InitialDb.cs" />
+    <Compile Include="Migrations\202103020115514_InitialDb.Designer.cs">
+      <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -291,20 +275,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102230907578_InitialDb.resx">
-      <DependentUpon>202102230907578_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102271240164_CreateTablePlace.resx">
-      <DependentUpon>202102271240164_CreateTablePlace.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102271246073_UpdateAttendanceTable.resx">
-      <DependentUpon>202102271246073_UpdateAttendanceTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102271256180_UpdateAttendanceTable1.resx">
-      <DependentUpon>202102271256180_UpdateAttendanceTable1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102271321497_UpdateAttendancesTable.resx">
-      <DependentUpon>202102271321497_UpdateAttendancesTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103020115514_InitialDb.resx">
+      <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

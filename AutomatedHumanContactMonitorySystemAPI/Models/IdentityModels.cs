@@ -24,7 +24,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Models
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Place> Places { get; set; }
         public ApplicationDbContext()
-            : base("PeopleDatabase", throwIfV1Schema: false)
+            : base("AhcmsContext", throwIfV1Schema: false)
         {
         }
 
