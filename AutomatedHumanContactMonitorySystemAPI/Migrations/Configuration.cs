@@ -24,11 +24,10 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
                                                         Address = "Quezon City", 
                                                         Age = 54 });
 
-            context.Attendances.Add(new Models.Attendance { AttendeeId = 1, 
-                                                            VisitedDateTime = DateTime.Now, 
-                                                            Temperature = 37, 
-                                                            PlaceId = 1 });
-
+            //context.Attendances.Add(new Models.Attendance { AttendeeId = 1, 
+            //                                                VisitedDateTime = DateTime.Now, 
+            //                                                Temperature = 37, 
+            //                                                PlaceId = 1 });
         }
     }
 }
