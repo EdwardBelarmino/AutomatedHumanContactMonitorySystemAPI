@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202103020115514_InitialDb.Designer.cs">
       <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103020123534_SeedInitialDataToAllTables.cs" />
+    <Compile Include="Migrations\202103020123534_SeedInitialDataToAllTables.Designer.cs">
+      <DependentUpon>202103020123534_SeedInitialDataToAllTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -277,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103020115514_InitialDb.resx">
       <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103020123534_SeedInitialDataToAllTables.resx">
+      <DependentUpon>202103020123534_SeedInitialDataToAllTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
