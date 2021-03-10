@@ -1,4 +1,6 @@
-﻿using AutomatedHumanContactMonitorySystemAPI.Models;
+﻿using AutoMapper;
+using AutomatedHumanContactMonitorySystemAPI.Dtos;
+using AutomatedHumanContactMonitorySystemAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +55,33 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             var attendee = _context.Attendees.Where(a => a.Id == id).SingleOrDefault();
             _context.Attendees.Remove(attendee);
             _context.SaveChanges();
+        }
+
+        [HttpPost]
+        public IHttpActionResult GetAttendeeBySearchParameter(SearchDto searchDto)
+        {
+
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var attendees = _context.Attendees.AsEnumerable();
+
+            switch (searchDto.SearchBy.ToUpper().Trim())
+            {
+                case "NAME":
+                    attendees = attendees.Where(a => a.Name.Contains(searchDto.SearchText));
+                    break;
+                case "ADDRESS":
+                    attendees = attendees.Where(a => a.Address.Contains(searchDto.SearchText));
+                    break;
+                default:
+                    break;
+
+            }
+            //.ToList()
+            //.Select(Mapper.Map<Item, ItemDto>);
+
+            return Ok(attendees.ToList());
         }
     }
 }
