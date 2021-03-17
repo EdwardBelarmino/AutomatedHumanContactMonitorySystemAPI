@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemAPI.Models;
+﻿using AutomatedHumanContactMonitorySystemAPI.Dtos;
+using AutomatedHumanContactMonitorySystemAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,5 +53,31 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             _context.Places.Remove(place);
             _context.SaveChanges();
         }
+
+        [HttpPost]
+        public IHttpActionResult GetPlaceBySearchParameter(SearchDto searchDto)
+        {
+
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var places = _context.Places.AsEnumerable();
+
+            switch (searchDto.SearchBy.ToUpper().Trim())
+            {
+                case "LOCATION":
+                    places = places.Where(a => a.Location.Contains(searchDto.SearchText));
+                    break;
+               
+                default:
+                    break;
+
+            }
+            //.ToList()
+            //.Select(Mapper.Map<Item, ItemDto>);
+
+            return Ok(places.ToList());
+        }
+
     }
 }
