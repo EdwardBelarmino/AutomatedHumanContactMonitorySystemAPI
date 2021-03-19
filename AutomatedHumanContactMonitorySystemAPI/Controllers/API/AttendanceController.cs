@@ -73,5 +73,32 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             _context.Attendances.Remove(attendance);
             _context.SaveChanges();
         }
+
+        [HttpPost]
+        public IHttpActionResult GetAttendanceBySearchParameter(SearchDto searchDto)
+        {
+
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var attendances = _context.Attendances.AsEnumerable();
+
+            switch (searchDto.SearchBy.ToUpper().Trim())
+            {
+                case "DATEANDTIME":
+                    attendances = attendances.Where(a => a.VisitedDateTime.ToString().Contains(searchDto.SearchText));
+                    break;
+                case "TEMPERATURE":
+                    attendances = attendances.Where(a => a.Temperature.ToString().Contains(searchDto.SearchText));
+                    break;
+                default:
+                    break;
+
+            }
+            //.ToList()
+            //.Select(Mapper.Map<Item, ItemDto>);
+
+            return Ok(attendances.ToList());
+        }
     }
 }
