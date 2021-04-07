@@ -29,6 +29,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                                                   VisitedDateTime = a.VisitedDateTime, 
                                                                                   Temperature = a.Temperature, 
                                                                                   AttendeeId = a.Attendee.Id, 
+                                                                                  AttendeeRFID = a.Attendee.AttendeeRFID,
                                                                                   Name = a.Attendee.Name, 
                                                                                   Age = a.Attendee.Age, 
                                                                                   Address = a.Attendee.Address, 
