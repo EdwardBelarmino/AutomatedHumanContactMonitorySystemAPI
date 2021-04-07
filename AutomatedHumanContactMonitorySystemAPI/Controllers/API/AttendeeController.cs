@@ -44,6 +44,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         {
             var attendeeToUpdate = _context.Attendees.Where(a => a.Id == attendee.Id).SingleOrDefault();
             attendeeToUpdate.Name = attendee.Name;
+            attendeeToUpdate.AttendeeRFID = attendee.AttendeeRFID;
             attendeeToUpdate.Age = attendee.Age;
             attendeeToUpdate.Address = attendee.Address;
             _context.SaveChanges();

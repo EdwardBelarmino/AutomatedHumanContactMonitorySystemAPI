@@ -22,7 +22,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
 
             context.Attendees.Add(new Models.Attendee { Name = "Juan Pinas", 
                                                         Address = "Quezon City", 
-                                                        Age = 54 });
+                                                         });
 
             //context.Attendances.Add(new Models.Attendance { AttendeeId = 1, 
             //                                                VisitedDateTime = DateTime.Now, 

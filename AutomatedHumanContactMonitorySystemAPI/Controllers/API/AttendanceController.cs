@@ -25,6 +25,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             var attendaces = _context.Attendances.Include(a => a.Attendee)
                                                  .Include(a => a.Place)
                                                  .Select(a => new AttendanceDto { Id = a.Id, 
+                                                                                  RFID = a.RFID,
                                                                                   VisitedDateTime = a.VisitedDateTime, 
                                                                                   Temperature = a.Temperature, 
                                                                                   AttendeeId = a.Attendee.Id, 

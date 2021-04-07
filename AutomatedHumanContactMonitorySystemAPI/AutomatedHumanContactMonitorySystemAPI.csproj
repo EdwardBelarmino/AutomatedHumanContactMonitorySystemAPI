@@ -196,6 +196,18 @@
     <Compile Include="Migrations\202103020115514_InitialDb.Designer.cs">
       <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104051408195_RFID.cs" />
+    <Compile Include="Migrations\202104051408195_RFID.Designer.cs">
+      <DependentUpon>202104051408195_RFID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104051411015_RFIDInModels.cs" />
+    <Compile Include="Migrations\202104051411015_RFIDInModels.Designer.cs">
+      <DependentUpon>202104051411015_RFIDInModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104070507196_addedAttendeeRFIDtoAttendeeTable.cs" />
+    <Compile Include="Migrations\202104070507196_addedAttendeeRFIDtoAttendeeTable.Designer.cs">
+      <DependentUpon>202104070507196_addedAttendeeRFIDtoAttendeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -283,6 +295,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103020115514_InitialDb.resx">
       <DependentUpon>202103020115514_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104051408195_RFID.resx">
+      <DependentUpon>202104051408195_RFID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104051411015_RFIDInModels.resx">
+      <DependentUpon>202104051411015_RFIDInModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104070507196_addedAttendeeRFIDtoAttendeeTable.resx">
+      <DependentUpon>202104070507196_addedAttendeeRFIDtoAttendeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
