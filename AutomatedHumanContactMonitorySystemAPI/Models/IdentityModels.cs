@@ -23,6 +23,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Models
         public DbSet<Attendee> Attendees { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Place> Places { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
         public ApplicationDbContext()
             : base("AhcmsContext", throwIfV1Schema: false)
         {

@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\AttendanceController.cs" />
     <Compile Include="Controllers\API\AttendeeController.cs" />
+    <Compile Include="Controllers\API\LoginController.cs" />
     <Compile Include="Controllers\API\PlaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -208,8 +209,13 @@
     <Compile Include="Migrations\202104070507196_addedAttendeeRFIDtoAttendeeTable.Designer.cs">
       <DependentUpon>202104070507196_addedAttendeeRFIDtoAttendeeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104080822581_AddedAppUserTable.cs" />
+    <Compile Include="Migrations\202104080822581_AddedAppUserTable.Designer.cs">
+      <DependentUpon>202104080822581_AddedAppUserTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104070507196_addedAttendeeRFIDtoAttendeeTable.resx">
       <DependentUpon>202104070507196_addedAttendeeRFIDtoAttendeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104080822581_AddedAppUserTable.resx">
+      <DependentUpon>202104080822581_AddedAppUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
