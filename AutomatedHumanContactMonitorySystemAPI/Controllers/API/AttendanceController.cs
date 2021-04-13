@@ -69,8 +69,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             if (attendance.Status == "POSITIVE")
             {
-                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.ToUniversalTime() >= attendanceToUpdate.VisitedDateTime.ToUniversalTime().AddDays(-14) &&
-                                                                          a.VisitedDateTime.ToUniversalTime() <= attendanceToUpdate.VisitedDateTime.ToUniversalTime()).ToList();
+                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.ToUniversalTime().Date == attendanceToUpdate.VisitedDateTime.ToUniversalTime().Date).ToList();
 
                 attendancesToUpdate.ToList().ForEach(a => a.Status = "PUI");
             }
