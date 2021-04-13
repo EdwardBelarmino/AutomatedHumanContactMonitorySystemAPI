@@ -24,6 +24,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Migrations
             {
                 Name = "Juan Pinas",
                 Address = "Quezon City",
+                Status = "NORMAL"
             });
 
             context.AppUsers.AddOrUpdate(new Models.AppUser
