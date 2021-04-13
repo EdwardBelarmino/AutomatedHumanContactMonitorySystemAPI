@@ -83,7 +83,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var attendances = _context.Attendances.AsEnumerable();
+            var attendances = _context.Attendances.Include(a => a.Attendee)
+                                                  .Include(a => a.Place)
+                                                  .AsEnumerable();
 
             switch (searchDto.SearchBy.ToUpper().Trim())
             {
@@ -92,6 +94,15 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                     break;
                 case "TEMPERATURE":
                     attendances = attendances.Where(a => a.Temperature.ToString().Contains(searchDto.SearchText));
+                    break;
+                case "NAME":
+                    attendances = attendances.Where(a => a.Attendee.Name.ToString().Contains(searchDto.SearchText));
+                    break;
+                case "RFID":
+                    attendances = attendances.Where(a => a.Attendee.AttendeeRFID.ToString().Contains(searchDto.SearchText));
+                    break;
+                case "LOCATION":
+                    attendances = attendances.Where(a => a.Place.Location.ToString().Contains(searchDto.SearchText));
                     break;
                 default:
                     break;
