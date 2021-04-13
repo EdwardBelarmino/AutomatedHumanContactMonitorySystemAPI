@@ -67,20 +67,16 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
             attendanceToUpdate.Status = attendance.Status;
             var incubationDate = attendanceToUpdate.VisitedDateTime.AddDays(-14);
-            if (attendance.Status.Trim() == "POSITIVE")
+            if (attendance.Status == "POSITIVE")
             {
-                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Date.Year >= incubationDate.Date.Year &&
-                                                    a.VisitedDateTime.Date.Month >= incubationDate.Date.Month &&
-                                                    a.VisitedDateTime.Date.Day >= incubationDate.Date.Day &&
-                                                    a.VisitedDateTime.Date.Year <= attendanceToUpdate.VisitedDateTime.Date.Year &&
-                                                    a.VisitedDateTime.Date.Month <= attendanceToUpdate.VisitedDateTime.Date.Month &&
-                                                    a.VisitedDateTime.Date.Day <= attendanceToUpdate.VisitedDateTime.Date.Day).ToList();
+                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Year >= incubationDate.Year &&
+                                                    a.VisitedDateTime.Month >= incubationDate.Month &&
+                                                    a.VisitedDateTime.Day >= incubationDate.Day &&
+                                                    a.VisitedDateTime.Year <= attendanceToUpdate.VisitedDateTime.Year &&
+                                                    a.VisitedDateTime.Month <= attendanceToUpdate.VisitedDateTime.Month &&
+                                                    a.VisitedDateTime.Day <= attendanceToUpdate.VisitedDateTime.Day).ToList();
 
-                
-                foreach (var data in attendancesToUpdate)
-                {
-                    data.Status = "PUI";
-                }
+                attendancesToUpdate.ToList().ForEach(a => a.Status = "PUI");
             }
 
             _context.SaveChanges();
