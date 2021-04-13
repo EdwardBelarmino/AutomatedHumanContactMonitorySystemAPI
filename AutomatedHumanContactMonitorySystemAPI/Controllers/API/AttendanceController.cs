@@ -67,12 +67,15 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
             attendanceToUpdate.Status = attendance.Status;
 
-            var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Date <= attendanceToUpdate.VisitedDateTime.Date &&
+            if (attendance.Status == "POSITIVE")
+            {
+                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Date <= attendanceToUpdate.VisitedDateTime.Date &&
                                                                       a.VisitedDateTime.Date >= attendanceToUpdate.VisitedDateTime.Date.AddDays(-14));
 
-            foreach(var data in attendancesToUpdate)
-            {
-                data.Status = "PUI";
+                foreach (var data in attendancesToUpdate)
+                {
+                    data.Status = "PUI";
+                }
             }
 
             _context.SaveChanges();
