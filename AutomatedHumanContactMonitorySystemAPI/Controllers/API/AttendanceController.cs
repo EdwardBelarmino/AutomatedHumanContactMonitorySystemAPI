@@ -66,11 +66,15 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         {
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
             attendanceToUpdate.Status = attendance.Status;
-
+            var incubationDate = attendanceToUpdate.VisitedDateTime.AddDays(-14);
             if (attendance.Status == "POSITIVE")
             {
-                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime <= attendanceToUpdate.VisitedDateTime &&
-                                                                      a.VisitedDateTime >= attendanceToUpdate.VisitedDateTime.AddDays(-14)).ToList();
+                var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Year >= incubationDate.Year &&
+                                                    a.VisitedDateTime.Month >= incubationDate.Month &&
+                                                    a.VisitedDateTime.Day >= incubationDate.Day &&
+                                                    a.VisitedDateTime.Year <= attendanceToUpdate.VisitedDateTime.Year &&
+                                                    a.VisitedDateTime.Month <= attendanceToUpdate.VisitedDateTime.Month &&
+                                                    a.VisitedDateTime.Day <= attendanceToUpdate.VisitedDateTime.Day).ToList();
 
                 
                 foreach (var data in attendancesToUpdate)
