@@ -64,8 +64,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         public void Put([FromBody] Attendance attendance)
         {
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
-            attendanceToUpdate.VisitedDateTime = attendance.VisitedDateTime;
-            attendanceToUpdate.Temperature = attendance.Temperature;
+            attendanceToUpdate.Status = attendance.Status;
             _context.SaveChanges();
         }
 
