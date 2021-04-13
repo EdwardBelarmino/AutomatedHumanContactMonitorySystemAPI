@@ -60,8 +60,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             _context.SaveChanges();
         }
 
-        // PUT api/<controller>/5
-        public void Put([FromBody] Attendance attendance)
+        // PUT api/<controller>/UpdateAttendanceStatus
+        [HttpPost]
+        public void UpdateAttendanceStatus([FromBody] Attendance attendance)
         {
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
             attendanceToUpdate.Status = attendance.Status;
