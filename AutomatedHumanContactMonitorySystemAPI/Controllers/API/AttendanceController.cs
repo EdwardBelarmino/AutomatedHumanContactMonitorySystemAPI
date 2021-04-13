@@ -97,7 +97,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                       Age = a.Attendee.Age,
                                                       Address = a.Attendee.Address,
                                                       PlaceId = a.Place.Id,
-                                                      Location = a.Place.Location
+                                                      Location = a.Place.Location,
+                                                      Status = a.Attendee.Status
+                                                      
                                                   })
                                                   .AsEnumerable();
 
