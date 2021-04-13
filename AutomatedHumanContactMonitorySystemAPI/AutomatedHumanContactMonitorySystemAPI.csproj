@@ -217,6 +217,14 @@
     <Compile Include="Migrations\202104130320415_AddedStatusInAttendeeTable.Designer.cs">
       <DependentUpon>202104130320415_AddedStatusInAttendeeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104131159042_RemoveAttendanceRfidAndAddStatusInAttendance.cs" />
+    <Compile Include="Migrations\202104131159042_RemoveAttendanceRfidAndAddStatusInAttendance.Designer.cs">
+      <DependentUpon>202104131159042_RemoveAttendanceRfidAndAddStatusInAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131201389_RemoveRfidFromAttendance.cs" />
+    <Compile Include="Migrations\202104131201389_RemoveRfidFromAttendance.Designer.cs">
+      <DependentUpon>202104131201389_RemoveRfidFromAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -320,6 +328,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104130320415_AddedStatusInAttendeeTable.resx">
       <DependentUpon>202104130320415_AddedStatusInAttendeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131159042_RemoveAttendanceRfidAndAddStatusInAttendance.resx">
+      <DependentUpon>202104131159042_RemoveAttendanceRfidAndAddStatusInAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131201389_RemoveRfidFromAttendance.resx">
+      <DependentUpon>202104131201389_RemoveRfidFromAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

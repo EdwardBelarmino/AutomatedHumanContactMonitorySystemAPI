@@ -25,11 +25,12 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             var attendaces = _context.Attendances.Include(a => a.Attendee)
                                                  .Include(a => a.Place)
                                                  .Select(a => new AttendanceDto { Id = a.Id, 
-                                                                                  RFID = a.RFID,
                                                                                   VisitedDateTime = a.VisitedDateTime, 
                                                                                   Temperature = a.Temperature, 
                                                                                   AttendeeId = a.Attendee.Id, 
                                                                                   AttendeeRFID = a.Attendee.AttendeeRFID,
+                                                                                  AttendeeStatus = a.Attendee.Status,
+                                                                                  Status = a.Status,
                                                                                   Name = a.Attendee.Name, 
                                                                                   Age = a.Attendee.Age, 
                                                                                   Address = a.Attendee.Address, 
@@ -92,14 +93,14 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                       Temperature = a.Temperature,
                                                       AttendeeId = a.Attendee.Id,
                                                       AttendeeRFID = a.Attendee.AttendeeRFID,
-                                                      RFID = a.RFID,
+                                                      AttendeeStatus = a.Attendee.Status,
+                                                      Status = a.Status,
                                                       Name = a.Attendee.Name,
                                                       Age = a.Attendee.Age,
                                                       Address = a.Attendee.Address,
                                                       PlaceId = a.Place.Id,
-                                                      Location = a.Place.Location,
-                                                      Status = a.Attendee.Status
-                                                      
+                                                      Location = a.Place.Location
+
                                                   })
                                                   .AsEnumerable();
 
