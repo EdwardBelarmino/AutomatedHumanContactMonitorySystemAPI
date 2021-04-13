@@ -85,6 +85,20 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             var attendances = _context.Attendances.Include(a => a.Attendee)
                                                   .Include(a => a.Place)
+                                                  .Select(a => new AttendanceDto
+                                                  {
+                                                      Id = a.Id,
+                                                      VisitedDateTime = a.VisitedDateTime,
+                                                      Temperature = a.Temperature,
+                                                      AttendeeId = a.Attendee.Id,
+                                                      AttendeeRFID = a.Attendee.AttendeeRFID,
+                                                      RFID = a.RFID,
+                                                      Name = a.Attendee.Name,
+                                                      Age = a.Attendee.Age,
+                                                      Address = a.Attendee.Address,
+                                                      PlaceId = a.Place.Id,
+                                                      Location = a.Place.Location
+                                                  })
                                                   .AsEnumerable();
 
             switch (searchDto.SearchBy.ToUpper().Trim())
@@ -96,13 +110,13 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                     attendances = attendances.Where(a => a.Temperature.ToString().Contains(searchDto.SearchText));
                     break;
                 case "NAME":
-                    attendances = attendances.Where(a => a.Attendee.Name.ToString().Contains(searchDto.SearchText));
+                    attendances = attendances.Where(a => a.Name.ToString().Contains(searchDto.SearchText));
                     break;
                 case "RFID":
-                    attendances = attendances.Where(a => a.Attendee.AttendeeRFID.ToString().Contains(searchDto.SearchText));
+                    attendances = attendances.Where(a => a.AttendeeRFID.ToString().Contains(searchDto.SearchText));
                     break;
                 case "LOCATION":
-                    attendances = attendances.Where(a => a.Place.Location.ToString().Contains(searchDto.SearchText));
+                    attendances = attendances.Where(a => a.Location.ToString().Contains(searchDto.SearchText));
                     break;
                 default:
                     break;
