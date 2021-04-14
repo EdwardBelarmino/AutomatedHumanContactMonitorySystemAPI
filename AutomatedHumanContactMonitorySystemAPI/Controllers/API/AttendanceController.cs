@@ -66,15 +66,17 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         {
             var attendanceToUpdate = _context.Attendances.Where(a => a.Id == attendance.Id).SingleOrDefault();
             attendanceToUpdate.Status = attendance.Status;
+            _context.SaveChanges();
 
             if (attendance.Status == "POSITIVE")
             {
                 var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.ToUniversalTime().Date == attendanceToUpdate.VisitedDateTime.ToUniversalTime().Date).ToList();
 
                 attendancesToUpdate.ToList().ForEach(a => a.Status = "PUI");
+                _context.SaveChanges();
             }
 
-            _context.SaveChanges();
+            
         }
 
         // DELETE api/<controller>/5
