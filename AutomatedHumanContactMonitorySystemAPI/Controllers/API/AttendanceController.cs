@@ -133,7 +133,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult GetAttendanceByDate(DateTime date)
+        public IHttpActionResult GetAttendanceByDate(SearchDto searchDto)
         {
 
             if (!ModelState.IsValid)
@@ -141,9 +141,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             var attendances = _context.Attendances.Include(a => a.Attendee)
                                                   .Include(a => a.Place)
-                                                  .Where(a => a.VisitedDateTime.Year == date.Year &&
-                                                              a.VisitedDateTime.Month == date.Month &&
-                                                              a.VisitedDateTime.Day == date.Day)
+                                                  .Where(a => a.VisitedDateTime.Year == searchDto.Date.Value.Year &&
+                                                              a.VisitedDateTime.Month == searchDto.Date.Value.Month &&
+                                                              a.VisitedDateTime.Day == searchDto.Date.Value.Day)
                                                   .Select(a => new AttendanceDto
                                                   {
                                                       Id = a.Id,

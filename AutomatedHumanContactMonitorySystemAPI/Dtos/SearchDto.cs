@@ -9,5 +9,6 @@ namespace AutomatedHumanContactMonitorySystemAPI.Dtos
     {
         public string SearchBy { get; set; }
         public string SearchText { get; set; }
+        public DateTime? Date { get; set; }
     }
 }
