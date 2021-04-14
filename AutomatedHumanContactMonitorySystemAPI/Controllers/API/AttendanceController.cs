@@ -133,7 +133,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult GetAttendanceByDate(DateTime date)
+        public IHttpActionResult GetAttendanceByDate([FromBody] DateTime date)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
