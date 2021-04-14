@@ -133,7 +133,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult GetAttendanceByDate(SearchDto searchDto)
+        public IHttpActionResult GetAttendanceByDate([FromBody] SearchDto searchDto)
         {
 
             if (!ModelState.IsValid)
