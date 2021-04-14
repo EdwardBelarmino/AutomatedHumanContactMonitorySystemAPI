@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemAPI.Dtos;
 using AutomatedHumanContactMonitorySystemAPI.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -159,7 +160,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                   })
                                                   .AsEnumerable();
 
-            return Ok(attendances.ToList());
+            return Ok(JsonConvert.SerializeObject(attendances.ToList()));
         }
     }
 }
