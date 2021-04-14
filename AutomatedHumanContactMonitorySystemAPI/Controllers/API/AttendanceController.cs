@@ -157,10 +157,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                       PlaceId = a.Place.Id,
                                                       Location = a.Place.Location
 
-                                                  })
-                                                  .AsEnumerable();
+                                                  }).ToList();
 
-            return JsonConvert.SerializeObject(attendances.ToList());
+            return JsonConvert.SerializeObject(attendances);
         }
     }
 }
