@@ -141,9 +141,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             var attendances = _context.Attendances.Include(a => a.Attendee)
                                                   .Include(a => a.Place)
-                                                  .Where(a => a.VisitedDateTime.Date.Year == searchDto.Date.Value.Date.Year &&
-                                                              a.VisitedDateTime.Date.Month == searchDto.Date.Value.Date.Month &&
-                                                              a.VisitedDateTime.Date.Day == searchDto.Date.Value.Date.Day)
+                                                  .Where(a => a.VisitedDateTime.Date == searchDto.Date.Value.Date)
                                                   .Select(a => new AttendanceDto
                                                   {
                                                       Id = a.Id,
