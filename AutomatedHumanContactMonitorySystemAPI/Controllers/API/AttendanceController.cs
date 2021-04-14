@@ -131,5 +131,38 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             return Ok(attendances.ToList());
         }
+
+        [HttpPost]
+        public IHttpActionResult GetAttendanceByDate(DateTime date)
+        {
+
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var attendances = _context.Attendances.Include(a => a.Attendee)
+                                                  .Include(a => a.Place)
+                                                  .Where(a => a.VisitedDateTime.Year == date.Year &&
+                                                              a.VisitedDateTime.Month == date.Month &&
+                                                              a.VisitedDateTime.Day == date.Day)
+                                                  .Select(a => new AttendanceDto
+                                                  {
+                                                      Id = a.Id,
+                                                      VisitedDateTime = a.VisitedDateTime,
+                                                      Temperature = a.Temperature,
+                                                      AttendeeId = a.Attendee.Id,
+                                                      AttendeeRFID = a.Attendee.AttendeeRFID,
+                                                      AttendeeStatus = a.Attendee.Status,
+                                                      Status = a.Status,
+                                                      Name = a.Attendee.Name,
+                                                      Age = a.Attendee.Age,
+                                                      Address = a.Attendee.Address,
+                                                      PlaceId = a.Place.Id,
+                                                      Location = a.Place.Location
+
+                                                  })
+                                                  .AsEnumerable();
+
+            return Ok(attendances.ToList());
+        }
     }
 }
