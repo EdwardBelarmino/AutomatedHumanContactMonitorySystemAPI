@@ -134,14 +134,16 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult GetAttendanceByDate([FromBody] SearchDto search)
+        public IHttpActionResult GetAttendanceByDate([FromBody] SearchDto searchDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             var attendances = _context.Attendances.Include(a => a.Attendee)
                                                   .Include(a => a.Place)
-                                                  .Where(a => a.VisitedDateTime == search.Date.Value)
+                                                  .Where(a => a.VisitedDateTime.Year == searchDto.Date.Value.Year &&
+                                                              a.VisitedDateTime.Month == searchDto.Date.Value.Month &&
+                                                              a.VisitedDateTime.Day == searchDto.Date.Value.Day)
                                                   .Select(a => new AttendanceDto
                                                   {
                                                       Id = a.Id,
