@@ -158,9 +158,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                       Location = a.Place.Location
 
                                                   })
-                                                  .AsEnumerable();
+                                                  .ToList();
 
-            return Ok(JsonConvert.SerializeObject(attendances.ToList()).ToString());
+            return Ok(JsonConvert.SerializeObject(attendances).ToString());
         }
     }
 }
