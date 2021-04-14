@@ -134,7 +134,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
         }
 
         [HttpPost]
-        public string GetAttendanceByDate([FromBody] DateTime date)
+        public IHttpActionResult GetAttendanceByDate([FromBody] DateTime date)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -157,9 +157,10 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                       PlaceId = a.Place.Id,
                                                       Location = a.Place.Location
 
-                                                  }).ToList();
+                                                  })
+                                                  .AsEnumerable();
 
-            return JsonConvert.SerializeObject(attendances);
+            return Ok(attendances.ToList());
         }
     }
 }
