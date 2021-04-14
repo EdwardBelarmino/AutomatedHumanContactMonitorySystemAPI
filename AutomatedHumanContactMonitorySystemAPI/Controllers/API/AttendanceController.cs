@@ -72,7 +72,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             {
                 var attendancesToUpdate = _context.Attendances.Where(a => a.VisitedDateTime.Date.Year == attendanceToUpdate.VisitedDateTime.Date.Year &&
                                                                           a.VisitedDateTime.Date.Month == attendanceToUpdate.VisitedDateTime.Date.Month &&
-                                                                          a.VisitedDateTime.Date.Day == attendanceToUpdate.VisitedDateTime.Date.Month);
+                                                                          a.VisitedDateTime.Date.Day == attendanceToUpdate.VisitedDateTime.Date.Month).ToList();
 
                 foreach (var data in attendancesToUpdate)
                 {
