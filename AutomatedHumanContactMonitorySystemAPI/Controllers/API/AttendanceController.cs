@@ -160,7 +160,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
                                                   })
                                                   .AsEnumerable();
 
-            return Ok(JsonConvert.SerializeObject(attendances.ToList()));
+            return Ok(JsonConvert.SerializeObject(attendances.ToList()).ToString());
         }
     }
 }
