@@ -27,9 +27,9 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var isAuthorized = _context.AppUsers.Where(a => a.Username == loginAppUser.Username && a.Password == loginAppUser.Password).Any();
+            var placeId = _context.AppUsers.Where(a => a.Username == loginAppUser.Username && a.Password == loginAppUser.Password).SingleOrDefault().PlaceId;
 
-            return Ok(isAuthorized);
+            return Ok(placeId);
         }
     }
 }
