@@ -50,6 +50,13 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             _context.SaveChanges();
         }
 
+        [HttpPost]
+        public void UpdateAttendeeStatus([FromBody] Attendee attendee)
+        {
+            var attendeeToUpdate = _context.Attendees.Where(a => a.Id == attendee.Id).SingleOrDefault();
+            attendeeToUpdate.Status = attendee.Status;
+            _context.SaveChanges();
+        }
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
