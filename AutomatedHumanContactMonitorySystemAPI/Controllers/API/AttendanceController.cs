@@ -88,6 +88,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             var attendances = _context.Attendances.Include(a => a.Attendee)
                                                   .Include(a => a.Place)
+                                                  .Where(a => a.PlaceId == searchDto.PlaceId)
                                                   .Select(a => new AttendanceDto
                                                   {
                                                       Id = a.Id,
