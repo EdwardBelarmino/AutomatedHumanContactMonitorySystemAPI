@@ -21,7 +21,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
 
         [HttpPost]
-        public IHttpActionResult Authorize(AppUser loginAppUser)
+        public int Authorize(AppUser loginAppUser)
         {
 
             if (!ModelState.IsValid)
@@ -29,7 +29,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             var placeId = _context.AppUsers.Where(a => a.Username == loginAppUser.Username && a.Password == loginAppUser.Password).SingleOrDefault().PlaceId;
 
-            return Ok(placeId);
+            return placeId;
         }
     }
 }
