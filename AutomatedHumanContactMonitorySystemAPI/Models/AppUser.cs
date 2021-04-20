@@ -12,5 +12,6 @@ namespace AutomatedHumanContactMonitorySystemAPI.Models
         public string Password { get; set; }
         public int PlaceId { get; set; }
         public Place Place { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
