@@ -21,15 +21,14 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
 
         [HttpPost]
-        public int Authorize(AppUser loginAppUser)
+        public AppUser Authorize(AppUser loginAppUser)
         {
-
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var placeId = _context.AppUsers.Where(a => a.Username == loginAppUser.Username && a.Password == loginAppUser.Password).SingleOrDefault().PlaceId;
+            var appUser = _context.AppUsers.Where(a => a.Username == loginAppUser.Username && a.Password == loginAppUser.Password).SingleOrDefault();
 
-            return placeId;
+            return appUser;
         }
     }
 }
