@@ -18,6 +18,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Dtos
         public int? Age { get; set; }
         public string Address { get; set; }
         public string AttendeeStatus { get; set; }
+        public string ContactNumber { get; set; }
         #endregion
         #region Place
         public int PlaceId { get; set; }
