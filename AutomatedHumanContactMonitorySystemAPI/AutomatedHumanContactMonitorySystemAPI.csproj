@@ -229,6 +229,10 @@
     <Compile Include="Migrations\202104200138284_AddIsAdminColumnInAppUserTable.Designer.cs">
       <DependentUpon>202104200138284_AddIsAdminColumnInAppUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104220219087_AddedContactNumberToAttendeeTable.cs" />
+    <Compile Include="Migrations\202104220219087_AddedContactNumberToAttendeeTable.Designer.cs">
+      <DependentUpon>202104220219087_AddedContactNumberToAttendeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104200138284_AddIsAdminColumnInAppUserTable.resx">
       <DependentUpon>202104200138284_AddIsAdminColumnInAppUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104220219087_AddedContactNumberToAttendeeTable.resx">
+      <DependentUpon>202104220219087_AddedContactNumberToAttendeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
