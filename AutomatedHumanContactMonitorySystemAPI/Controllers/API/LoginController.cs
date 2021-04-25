@@ -30,5 +30,20 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
             return appUser;
         }
+
+         public string Register([FromBody] AppUser registerAppUser)
+        {
+            if (_context.AppUsers.Where(a => a.Username == registerAppUser.Username).Any())
+            {
+                return "Username already registered";
+            }
+            else
+            {
+                _context.AppUsers.Add(registerAppUser);
+                _context.SaveChanges();
+                return "Registration successful";
+
+            }
+        }
     }
 }
