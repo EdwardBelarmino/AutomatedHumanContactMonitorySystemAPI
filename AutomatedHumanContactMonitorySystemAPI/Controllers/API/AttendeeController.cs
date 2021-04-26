@@ -33,10 +33,20 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
 
         // POST api/<controller>
        
-        public void Post([FromBody] Attendee attendeeToAdd)
+        public string Post([FromBody] Attendee attendeeToAdd)
         {
-            _context.Attendees.Add(attendeeToAdd);
-            _context.SaveChanges();
+            if (_context.Attendees.Where(a => a.AttendeeRFID == attendeeToAdd.AttendeeRFID).Any())
+            {
+                return "RFID already registered";
+            }
+            else
+            {
+                _context.Attendees.Add(attendeeToAdd);
+                _context.SaveChanges();
+                return "Registration successful";
+
+            }
+    
         }
 
         // PUT api/<controller>/5
