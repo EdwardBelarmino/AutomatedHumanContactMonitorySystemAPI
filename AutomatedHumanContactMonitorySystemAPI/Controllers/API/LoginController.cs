@@ -46,6 +46,7 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             }
         }
 
+        [HttpPut]
         public IHttpActionResult ChangePassword([FromBody] AppUser appUser)
         {
             var appUserToUpdate = _context.AppUsers.Where(a => a.Id == appUser.Id).SingleOrDefault();
