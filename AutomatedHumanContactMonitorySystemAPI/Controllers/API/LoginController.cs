@@ -46,11 +46,13 @@ namespace AutomatedHumanContactMonitorySystemAPI.Controllers.API
             }
         }
 
-        public void ChangePassword([FromBody] AppUser appUser)
+        public IHttpActionResult ChangePassword([FromBody] AppUser appUser)
         {
             var appUserToUpdate = _context.AppUsers.Where(a => a.Id == appUser.Id).SingleOrDefault();
             appUserToUpdate.Password = appUser.Password;
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
